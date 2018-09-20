@@ -16,9 +16,20 @@ export const passwordChanged = text => {
   };
 };
 
+/* 
+dispatch is what redux-thunk allows
+in order to do async calls(e.g. api)
+when doing network requests
+*/
 export const loginUser = ({ email, password }) => {
-  firebase
-    .auth()
-    .signInWithEmailAndPassword(email, password)
-    .then(user => console.log(user));
+  return dispatch => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      // right here we are dispatching an action after a request
+      // is complete
+      .then(user => {
+        dispatch({ type: "LOGIN_USER_SUCCESS", payload: user });
+      });
+  };
 };
