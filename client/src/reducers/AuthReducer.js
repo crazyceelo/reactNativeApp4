@@ -29,7 +29,8 @@ export default (state = initialState, action) => {
     case LOGIN_USER_SUCCESS:
       return {
         ...state,
-        user: action.payload
+        user: action.payload,
+        error: ""
       };
     case LOGIN_USER_FAIL:
       return {
