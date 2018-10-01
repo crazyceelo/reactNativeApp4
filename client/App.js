@@ -9,6 +9,9 @@ import ReduxThunk from "redux-thunk";
 // components
 import LoginForm from "./src/components/LoginForm";
 
+// router component
+import Router from "./src/router";
+
 export default class App extends React.Component {
   componentWillMount() {
     // Initialize Firebase
@@ -30,7 +33,8 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <View style={styles.container}>
-          <LoginForm />
+          <Router />
+          {/* <LoginForm /> */}
         </View>
       </Provider>
     );
