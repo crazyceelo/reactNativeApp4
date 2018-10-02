@@ -28,6 +28,7 @@ const RouterComponent = () => {
             component={EmployeeList}
             title="Employees"
             rightButtonStyle={{ right: 0 }}
+            initial
           />
           <Scene
             key="employeeCreate"
