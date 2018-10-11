@@ -1,10 +1,19 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, YellowBox } from "react-native";
+import _ from "lodash";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import reducers from "./src/reducers";
 import firebase from "firebase";
 import ReduxThunk from "redux-thunk";
+
+YellowBox.ignoreWarnings(["Setting a timer"]);
+const _console = _.clone(console);
+console.warn = message => {
+  if (message.indexOf("Setting a timer") <= -1) {
+    _console.warn(message);
+  }
+};
 
 // components
 import LoginForm from "./src/components/LoginForm";
@@ -34,7 +43,6 @@ export default class App extends React.Component {
       <Provider store={store}>
         <View style={styles.container}>
           <Router />
-          {/* <LoginForm /> */}
         </View>
       </Provider>
     );
